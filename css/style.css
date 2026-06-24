@@ -251,6 +251,8 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.18; font-weight: 700
 }
 .ins-chip:hover { transform: translateY(-3px); border-color: var(--brand); color: var(--brand); }
 .ins-chip .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--brand); flex: none; }
+.ins-chip--named { font-size: .92rem; gap: 9px; }
+.ins-ic { width: 28px; height: 28px; object-fit: contain; flex: 0 0 auto; border-radius: 5px; }
 
 /* ---------- Bilgi notu ---------- */
 .note {
