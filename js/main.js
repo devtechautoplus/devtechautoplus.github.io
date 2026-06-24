@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
   initWhatsAppLinks();
   initForms();
   initCalculator();
+  initHeroSlider();
+  initServiceExplorer();
 });
 
 /* Footer yıl */
@@ -74,6 +76,68 @@ function initReveal() {
     });
   }, { threshold: 0.12 });
   els.forEach(function (e) { io.observe(e); });
+}
+
+/* Hero görsel slider'ı — otomatik döner, hover'da durur, noktalardan gezilir */
+function initHeroSlider() {
+  var box = document.querySelector("[data-hero-slider]");
+  if (!box) return;
+  var slides = box.querySelectorAll(".hs-slide");
+  if (slides.length < 2) return;
+  var dotsWrap = box.querySelector(".hs-dots");
+  var i = 0, timer = null, dots = [];
+  if (dotsWrap) {
+    slides.forEach(function (s, idx) {
+      var d = document.createElement("button");
+      d.type = "button";
+      d.className = "hs-dot" + (idx === 0 ? " is-active" : "");
+      d.setAttribute("aria-label", "Görsel " + (idx + 1));
+      d.addEventListener("click", function () { go(idx); restart(); });
+      dotsWrap.appendChild(d);
+    });
+    dots = dotsWrap.querySelectorAll(".hs-dot");
+  }
+  function go(n) {
+    slides[i].classList.remove("is-active");
+    if (dots[i]) dots[i].classList.remove("is-active");
+    i = (n + slides.length) % slides.length;
+    slides[i].classList.add("is-active");
+    if (dots[i]) dots[i].classList.add("is-active");
+  }
+  function tick() { go(i + 1); }
+  function start() { timer = setInterval(tick, 4200); }
+  function restart() { clearInterval(timer); start(); }
+  box.addEventListener("mouseenter", function () { clearInterval(timer); });
+  box.addEventListener("mouseleave", start);
+  start();
+}
+
+/* İnteraktif hizmet explorer — sekme tıklama + otomatik geçiş */
+function initServiceExplorer() {
+  var ex = document.querySelector("[data-svc-explorer]");
+  if (!ex) return;
+  var tabs = ex.querySelectorAll("[data-svc-tab]");
+  var panels = ex.querySelectorAll("[data-svc-panel]");
+  if (!tabs.length) return;
+  var i = 0, timer = null, paused = false;
+  function activate(n) {
+    i = (n + tabs.length) % tabs.length;
+    tabs.forEach(function (t, idx) {
+      var on = idx === i;
+      t.classList.toggle("is-active", on);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    panels.forEach(function (p, idx) { p.classList.toggle("is-active", idx === i); });
+  }
+  tabs.forEach(function (t, idx) {
+    t.addEventListener("click", function () { activate(idx); restart(); });
+  });
+  function tick() { if (!paused) activate(i + 1); }
+  function start() { timer = setInterval(tick, 5200); }
+  function restart() { clearInterval(timer); start(); }
+  ex.addEventListener("mouseenter", function () { paused = true; });
+  ex.addEventListener("mouseleave", function () { paused = false; });
+  start();
 }
 
 /* data-wa="genel" gibi WhatsApp linklerini doldurur */
