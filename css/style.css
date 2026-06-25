@@ -578,8 +578,8 @@ img { max-width: 100%; }
 }
 
 /* sigorta logoları */
-.ins-logo { max-height: 50px; max-width: 88%; width: auto; object-fit: contain; }
-.ins-chip.has-logo { padding: 14px; }
+.ins-logo { max-height: 64px; max-width: 94%; width: auto; object-fit: contain; }
+.ins-chip.has-logo { padding: 12px; min-height: 92px; }
 
 /* ---------- Kampanya kartı ---------- */
 .camp-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
