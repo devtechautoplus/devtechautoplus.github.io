@@ -600,3 +600,16 @@ img { max-width: 100%; }
 .nav-dd-menu .dd-sep { border-top: 1px solid rgba(255,255,255,.1); margin-top: 5px; padding-top: 12px; }
 
 .camp-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ===== Instagram bolumu ===== */
+.btn--ig{background:linear-gradient(45deg,#f09433,#e6683c 30%,#dc2743 55%,#bc1888);color:#fff;box-shadow:0 10px 24px rgba(220,39,67,.30)}
+.btn--ig:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.ig-eyebrow{background:linear-gradient(45deg,rgba(240,148,51,.16),rgba(220,39,67,.16));color:#dc2743}
+.ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:34px}
+.ig-card{position:relative;aspect-ratio:1/1;border-radius:14px;overflow:hidden;display:block;background:var(--surface-soft)}
+.ig-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.ig-card:hover img{transform:scale(1.08)}
+.ig-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(45deg,rgba(240,148,51,.55),rgba(220,39,67,.6));opacity:0;transition:opacity .3s ease}
+.ig-card:hover .ig-ov{opacity:1}
+@media(max-width:860px){.ig-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:480px){.ig-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
