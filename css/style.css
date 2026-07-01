@@ -613,3 +613,6 @@ img { max-width: 100%; }
 .ig-card:hover .ig-ov{opacity:1}
 @media(max-width:860px){.ig-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:480px){.ig-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
+.nav-tels{display:flex;flex-direction:column;gap:2px;align-items:flex-start}
+.nav-tel--cep{font-size:.84rem}
+.nav-tel--cep svg{width:15px;height:15px}
